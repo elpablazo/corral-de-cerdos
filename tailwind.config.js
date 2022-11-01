@@ -5,7 +5,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Be Vietnam Pro"'],
+      },
+      colors: {
+        mud: "#AA5636",
+        dark: "#333333",
+        pig: "#FF8FB1",
+        grass: "#05946E",
+      },
+    },
   },
   plugins: [],
 };
