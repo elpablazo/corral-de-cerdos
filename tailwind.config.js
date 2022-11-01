@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['"Be Vietnam Pro"'],
+        cursive: ["Caveat"],
       },
       colors: {
         mud: "#AA5636",

@@ -1,40 +1,13 @@
 import { Fragment } from "react";
 import { Tab } from "@headlessui/react";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <Tab.Group>
-      <Tab.List>
-        <Tab as={Fragment}>
-          {({ selected }) => (
-            /* Use the `selected` state to conditionally style the selected tab. */
-            <button
-              className={
-                selected ? "bg-blue-500 text-white" : "bg-white text-black"
-              }
-            >
-              Tab 1
-            </button>
-          )}
-        </Tab>
-        <Tab as={Fragment}>
-          {({ selected }) => (
-            /* Use the `selected` state to conditionally style the selected tab. */
-            <button
-              className={
-                selected ? "bg-red-500 text-white" : "bg-white text-black"
-              }
-            >
-              Tab 1
-            </button>
-          )}
-        </Tab>
-        {/* ...  */}
-      </Tab.List>
-      <Tab.Panels>
-        <Tab.Panel>Content 1</Tab.Panel>
-        {/* ... */}
-      </Tab.Panels>
-    </Tab.Group>
+    <div className="flex font-semibold text-dark space-x-4">
+      <Link href="/">Inicio</Link>
+      <Link href="/#nosotros">Nosotros</Link>
+      <Link href="/#contacto">Contacto</Link>
+    </div>
   );
 }
