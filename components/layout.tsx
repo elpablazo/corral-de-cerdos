@@ -1,21 +1,59 @@
-import Logo from "./logo";
 import Navbar from "./navbar";
-import { useRouter } from "next/router";
+
+import { useGlobalStore } from "../lib/store";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface PageProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: PageProps) {
-  const router = useRouter();
+  const { toggleModal, isModalOpen, modalContent } = useGlobalStore(
+    (state) => ({
+      toggleModal: state.toggleModal,
+      isModalOpen: state.isModalOpen,
+      modalContent: state.modalContent,
+    })
+  );
 
   return (
     <div>
-      <div className="flex w-full justify-center md:justify-end pt-2 md:pr-2">
-        {router.pathname !== "/" && <Logo />}
+      {/* MODAL */}
+      {isModalOpen && (
+        <div className="fixed flex h-screen w-full items-center justify-center p-16 text-center">
+          <div
+            className="fixed h-screen w-full"
+            style={{
+              zIndex: 98,
+              background: "rgba(0,0,0,.7)",
+            }}
+            onClick={() => {
+              toggleModal();
+            }}
+          ></div>
+          <AnimatePresence>
+            <motion.div
+              className="w-full rounded bg-white p-8"
+              style={{
+                zIndex: 99,
+              }}
+              key="modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {modalContent}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
 
-        <Navbar />
-      </div>
+      {/* NAV BAR */}
+
+      <Navbar />
+
+      {/* CONTENT */}
       <div>{children}</div>
     </div>
   );
