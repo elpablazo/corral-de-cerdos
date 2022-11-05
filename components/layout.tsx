@@ -35,7 +35,7 @@ export default function Layout({ children }: PageProps) {
           {isModalOpen && (
             <AnimatePresence>
               <motion.div
-                className="w-full rounded bg-white dark:bg-dark dark:text-white/60"
+                className="w-full rounded bg-white transition-all ease-in dark:bg-dark dark:text-white/60"
                 style={{
                   zIndex: 99,
                 }}

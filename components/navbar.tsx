@@ -5,6 +5,7 @@ import Logo from "./logo";
 import { Switch } from "@headlessui/react";
 import { useGlobalStore } from "../lib/store";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 
 // Animaciones
 const animations = {
@@ -26,7 +27,7 @@ const smallAnimation = {
 
 export default function Navbar() {
   // Hook para cambiar el tema de la app
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
   // Switch de dark mode
   const [enabled, setEnabled] = useState(false);
   // Permite controlar las animaciones del navbar
@@ -34,6 +35,8 @@ export default function Navbar() {
 
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+
+  const router = useRouter();
 
   const controlNavbar = () => {
     if (typeof window !== "undefined") {
@@ -71,7 +74,7 @@ export default function Navbar() {
     <motion.nav
       animate={controls}
       variants={smallAnimation}
-      className={`fixed flex w-full justify-center space-x-4 bg-white px-4 py-2 text-dark dark:bg-dark dark:text-white md:justify-end md:text-lg ${
+      className={`fixed flex w-full justify-center space-x-4 bg-white px-4 py-2 text-dark transition-all ease-in dark:bg-dark dark:text-white md:justify-end md:text-lg ${
         scrolled ? `shadow` : ``
       }`}
     >
@@ -89,7 +92,13 @@ export default function Navbar() {
           } inline-block h-4 w-4 transform rounded-full bg-white transition`}
         />
       </Switch>
-      {scrolled && <Logo className="absolute left-4 hidden text-lg md:flex" />}
+      {scrolled ? (
+        <Logo className="absolute left-4 hidden text-lg md:flex" />
+      ) : (
+        router.pathname !== "/" && (
+          <Logo className="absolute left-4 hidden text-lg md:flex" />
+        )
+      )}
       <Link
         href="/"
         className="font-semibold hover:text-pig focus:text-pig dark:hover:text-pig/75 dark:focus:text-pig/75"

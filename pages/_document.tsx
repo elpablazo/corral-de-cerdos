@@ -9,7 +9,7 @@ export default function Document() {
   return (
     <Html>
       <Head />
-      <body className="dark:bg-dark dark:text-white/60">
+      <body className="transition-all ease-in dark:bg-dark dark:text-white/60">
         <Main />
         <NextScript />
       </body>
