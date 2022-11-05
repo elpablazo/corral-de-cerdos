@@ -75,7 +75,7 @@ export default function Page({ perfil, posts }: any) {
                     : "md:order-2 md:justify-start"
                 }`}
               >
-                {showFullText ? "Menos" : "Leer más"}
+                Leer artículo
               </Button>
               <h1
                 className={`text-xl font-bold uppercase dark:text-white/60 md:self-start ${
