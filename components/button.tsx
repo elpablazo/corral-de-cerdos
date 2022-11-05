@@ -32,7 +32,7 @@ export default function Button({
       whileTap={{
         scale: 0.9,
       }}
-      className={`font-title rounded-lg border-2 border-transparent py-2 px-4 font-sans text-lg font-bold tracking-normal text-white transition-all ${classType} ${className}`}
+      className={`rounded-lg border-2 border-pig py-2 px-4 font-sans text-lg font-bold tracking-normal text-white shadow-lg transition-all dark:border-white dark:bg-pig/75 ${classType} ${className}`}
       onClick={(e) => {
         // ¡Oink!
         setOink(true);

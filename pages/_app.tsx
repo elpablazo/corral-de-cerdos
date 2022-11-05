@@ -6,6 +6,7 @@ import { client } from "../lib/apollo";
 import { ApolloProvider } from "@apollo/client";
 import { useGlobalStore } from "../lib/store";
 import { useEffect, useRef } from "react";
+import { ThemeProvider } from "next-themes";
 
 export default function App({ Component, pageProps }: AppProps) {
   // ¡Oink!
@@ -29,9 +30,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ApolloProvider client={client}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }

@@ -1,23 +1,24 @@
 import { gql } from "@apollo/client";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next/types";
-import ReactMarkdown from "react-markdown";
 import { client } from "../lib/apollo";
 
 export default function Page({ manifiesto }: any) {
   return (
-    <div className="flex flex-col pt-12 text-center">
+    <div className="flex flex-col pt-16 text-center">
       <motion.h1
         key="text"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="mb-12 px-2 text-2xl font-bold tracking-tighter text-dark md:text-4xl lg:text-5xl"
+        className="text-shadow-light py-12 px-2 text-2xl font-bold tracking-tighter text-dark md:text-4xl lg:text-5xl"
       >
         <span className="text-mud">Nuestro</span>{" "}
         <span className="text-pig">manifiesto</span>
       </motion.h1>
-      <div
-        className="prose space-y-4 px-8 text-justify md:px-20 md:text-lg lg:px-32"
+      <motion.article
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="prose space-y-4 p-8 pb-16 text-justify md:px-20 md:text-lg lg:px-32"
         dangerouslySetInnerHTML={{ __html: manifiesto }}
       />
     </div>

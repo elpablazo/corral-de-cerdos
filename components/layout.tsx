@@ -2,6 +2,7 @@ import Navbar from "./navbar";
 
 import { useGlobalStore } from "../lib/store";
 import { AnimatePresence, motion } from "framer-motion";
+import PaperOverlay from "./PaperOverlay";
 
 interface PageProps {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ export default function Layout({ children }: PageProps) {
       {isModalOpen && (
         <div className="fixed flex h-screen w-full items-center justify-center px-4 text-center md:px-16 lg:mx-auto lg:w-auto">
           <div
-            className="fixed h-screen w-full"
+            className="fixed h-screen min-h-full w-full min-w-full"
             style={{
               zIndex: 98,
               background: "rgba(0,0,0,.7)",
@@ -34,7 +35,7 @@ export default function Layout({ children }: PageProps) {
           {isModalOpen && (
             <AnimatePresence>
               <motion.div
-                className="w-full rounded bg-white"
+                className="w-full rounded bg-white dark:bg-dark dark:text-white/60"
                 style={{
                   zIndex: 99,
                 }}

@@ -86,13 +86,13 @@ export default function Index({ autores }: any) {
   return (
     <div className="text-center">
       <h1
-        className={`px-2 pt-12 text-4xl font-bold tracking-tighter md:text-5xl`}
+        className={`text-shadow-light px-2 pt-12 text-4xl font-bold tracking-tighter md:text-5xl`}
       >
-        <span className="text-mud">Corral</span>{" "}
-        <span className="text-dark">de</span>{" "}
-        <span className="text-pig">cerdos</span>
+        <span className="text-mud dark:text-pig/75">Corral</span>{" "}
+        <span className="text-dark dark:text-pig/75">de</span>{" "}
+        <span className="text-pig dark:text-pig/75">cerdos</span>
       </h1>
-      <h2 className="font-cursive text-xl font-bold text-grass md:text-3xl">
+      <h2 className="font-cursive text-xl font-bold text-grass dark:text-white/75 md:text-3xl">
         Declaremos la guerra.
       </h2>
 
@@ -125,14 +125,14 @@ export default function Index({ autores }: any) {
         </div>
       </div>
 
-      {/* MANIFESTO */}
+      {/* MANIFIESTO */}
       <div
         style={{
           height: "50vh",
         }}
-        className="flex h-full min-h-full w-full flex-col items-center justify-evenly space-y-8 bg-mud py-8 px-8 font-serif text-xl text-white md:space-y-16 md:px-20 md:py-16 md:text-2xl lg:text-4xl"
+        className="flex h-full min-h-full w-full flex-col items-center justify-evenly space-y-8 bg-mud py-8 px-8 font-serif text-xl text-white dark:bg-mud/50 md:space-y-16 md:px-20 md:py-16 md:text-2xl lg:text-4xl"
       >
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 dark:text-white/95">
           <AnimatePresence>
             <motion.p
               animate={controlsA}
@@ -153,14 +153,14 @@ export default function Index({ autores }: any) {
         </div>
         <Button
           className="md:text-2xl"
-          onClick={(e) => router.push("/manifiesto")}
+          onClick={() => router.push("/manifiesto")}
         >
           ¡Oink!
         </Button>
       </div>
 
       <div id="nosotros" className="space-y-8 py-8 md:space-y-12 md:py-12">
-        <h1 className="md:text-5x font-sans text-4xl font-bold tracking-tighter text-gray-500">
+        <h1 className="md:text-5x font-sans text-4xl font-bold tracking-tighter text-gray-500 dark:text-white/75">
           ¿Quiénes somos?
         </h1>
         <div className="flex flex-col space-y-8 md:flex-row md:justify-evenly md:space-y-0">
@@ -197,7 +197,7 @@ export default function Index({ autores }: any) {
                           autor.attributes.Foto.data.attributes.alternativeText
                         }
                       />
-                      <p className="font-sans text-lg font-bold tracking-tighter text-gray-500">
+                      <p className="text-shadow-light font-sans text-lg font-bold tracking-tighter text-gray-500">
                         Sobre mí,{" "}
                         <span className="text-pig">
                           {autor.attributes.Nombre}
@@ -208,7 +208,7 @@ export default function Index({ autores }: any) {
 
                     {/* TEXTO */}
                     <div
-                      className="max-h-72 overflow-y-auto md:px-16"
+                      className="prose max-h-72 space-y-4 overflow-y-auto text-justify dark:text-white/60 md:px-16"
                       dangerouslySetInnerHTML={{
                         __html: autor.attributes.TextoIntroductorio,
                       }}
@@ -216,9 +216,10 @@ export default function Index({ autores }: any) {
 
                     <Button
                       className="mt-4"
-                      onClick={() =>
-                        router.push(`/autores/${autor.attributes.Slug}`)
-                      }
+                      onClick={() => {
+                        router.push(`/autores/${autor.attributes.Slug}`);
+                        toggleModal();
+                      }}
                     >
                       Quiero leerte
                     </Button>
@@ -242,6 +243,7 @@ export default function Index({ autores }: any) {
                 alt={autor.attributes.Foto.data.attributes.alternativeText}
               />
               <motion.p
+                className="dark:text-white/75"
                 whileHover={{
                   scale: 1.1,
                 }}
