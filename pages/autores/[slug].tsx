@@ -69,8 +69,17 @@ export default function Page({ perfil, posts }: any) {
             <Link
               key={post.id}
               href={`/posts/${post.attributes.Slug}`}
-              className="flex w-full justify-between space-y-2"
+              className="flex w-full flex-col items-center justify-between space-y-2 md:flex-row"
             >
+              <h1
+                className={`text-xl font-bold uppercase dark:text-white/60 md:self-start ${
+                  parseInt(post.id) % 2 === 0
+                    ? "pr-8 md:order-2 md:justify-end"
+                    : "md:order-1 md:justify-start"
+                }`}
+              >
+                {i + 1}: {post.attributes.Titulo}
+              </h1>
               <Button
                 primary={parseInt(post.id) % 2 === 0}
                 className={`w-max ${
@@ -81,15 +90,6 @@ export default function Page({ perfil, posts }: any) {
               >
                 Leer artículo
               </Button>
-              <h1
-                className={`text-xl font-bold uppercase dark:text-white/60 md:self-start ${
-                  parseInt(post.id) % 2 === 0
-                    ? "pr-8 md:order-2 md:justify-end"
-                    : "md:order-1 md:justify-start"
-                }`}
-              >
-                {i + 1}: {post.attributes.Titulo}
-              </h1>
             </Link>
           ))}
         </div>
