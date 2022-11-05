@@ -6,12 +6,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Button from "../../components/button";
 import { useState } from "react";
+import Head from "next/head";
 
 export default function Page({ perfil, posts }: any) {
   const [showFullText, setShowFullText] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center pt-12 text-center">
+      <Head>
+        <title>🐽 - {perfil.Nombre}</title>
+      </Head>
       <div className="container flex flex-col px-4 md:flex-row md:space-x-8">
         {/* FOTO Y NOMBRE */}
         <div className="flex flex-col items-center space-y-2 bg-white pb-2 transition-all ease-in dark:bg-dark">

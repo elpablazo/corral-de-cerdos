@@ -4,6 +4,7 @@ import { client } from "../../lib/apollo";
 import Image from "next/image";
 import { DateTime } from "luxon";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Page({ post }: any) {
   const fecha = DateTime.fromISO(post.publishedAt).toLocaleString(
@@ -12,6 +13,9 @@ export default function Page({ post }: any) {
 
   return (
     <div className="flex flex-col items-center justify-center pt-12 text-center">
+      <Head>
+        <title>🐽 - {post.Titulo}</title>
+      </Head>
       <div className="container flex flex-col items-center justify-center space-y-4">
         {/* PORTADA */}
         <div className="relative flex aspect-[3/2] h-auto w-full items-center justify-center self-center overflow-hidden rounded md:aspect-[3/1]">
