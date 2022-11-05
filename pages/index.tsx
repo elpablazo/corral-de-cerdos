@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import Button from "../components/button";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const animationTexts = [
   {
@@ -33,6 +34,9 @@ const animationTexts = [
 ];
 
 export default function Index({ autores }: any) {
+  // Router de nextjs
+  const router = useRouter();
+  // Store del modal
   const { toggleModal, setModalContent } = useGlobalStore((state) => ({
     toggleModal: state.toggleModal,
     setModalContent: state.setModalContent,
@@ -89,7 +93,7 @@ export default function Index({ autores }: any) {
         <span className="text-pig">cerdos</span>
       </h1>
       <h2 className="font-cursive text-xl font-bold text-grass md:text-3xl">
-        Eslogan de la página.
+        Declaremos la guerra.
       </h2>
 
       {/* CERCA */}
@@ -147,7 +151,10 @@ export default function Index({ autores }: any) {
             </AnimatePresence>
           )}
         </div>
-        <Button className="md:text-2xl" onClick={(e) => console.log(e)}>
+        <Button
+          className="md:text-2xl"
+          onClick={(e) => router.push("/manifiesto")}
+        >
           ¡Oink!
         </Button>
       </div>
@@ -158,43 +165,63 @@ export default function Index({ autores }: any) {
         </h1>
         <div className="flex flex-col space-y-8 md:flex-row md:justify-evenly md:space-y-0">
           {autores.map((autor: any) => (
-            <div
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+              }}
+              whileTap={{
+                scale: 0.95,
+              }}
               key={autor.id}
               className="flex w-auto cursor-pointer flex-col items-center justify-center space-y-4 font-cursive text-3xl font-bold"
               onClick={() => {
                 setModalContent(
-                  <div className="flex flex-col items-center justify-center text-center">
-                    <Image
-                      width={150}
-                      height={150}
-                      className="hidden rounded-full md:flex"
-                      src={autor.attributes.Foto.data.attributes.url}
-                      alt={
-                        autor.attributes.Foto.data.attributes.alternativeText
-                      }
-                    />
-                    <Image
-                      width={100}
-                      height={100}
-                      className="flex rounded-full md:hidden"
-                      src={autor.attributes.Foto.data.attributes.url}
-                      alt={
-                        autor.attributes.Foto.data.attributes.alternativeText
-                      }
-                    />
-                    <p className="font-sans text-lg font-bold tracking-tighter text-gray-500">
-                      Sobre mí,{" "}
-                      <span className="text-pig">
-                        {autor.attributes.Nombre}
-                      </span>
-                      .
-                    </p>
-                    <div className="max-h-72 overflow-y-auto pt-8 md:px-16">
-                      <ReactMarkdown>
-                        {autor.attributes.TextoIntroductorio}
-                      </ReactMarkdown>
+                  <div className="flex flex-col items-center justify-center space-y-8 p-8 pt-4 text-center">
+                    {/* PERFIL */}
+                    <div className="flex flex-col items-center space-y-4">
+                      <Image
+                        width={150}
+                        height={150}
+                        className="hidden rounded-full md:flex"
+                        src={autor.attributes.Foto.data.attributes.url}
+                        alt={
+                          autor.attributes.Foto.data.attributes.alternativeText
+                        }
+                      />
+                      <Image
+                        width={100}
+                        height={100}
+                        className="flex rounded-full md:hidden"
+                        src={autor.attributes.Foto.data.attributes.url}
+                        alt={
+                          autor.attributes.Foto.data.attributes.alternativeText
+                        }
+                      />
+                      <p className="font-sans text-lg font-bold tracking-tighter text-gray-500">
+                        Sobre mí,{" "}
+                        <span className="text-pig">
+                          {autor.attributes.Nombre}
+                        </span>
+                        .
+                      </p>
                     </div>
-                    <Button>Quiero leerte</Button>
+
+                    {/* TEXTO */}
+                    <div
+                      className="max-h-72 overflow-y-auto md:px-16"
+                      dangerouslySetInnerHTML={{
+                        __html: autor.attributes.TextoIntroductorio,
+                      }}
+                    />
+
+                    <Button
+                      className="mt-4"
+                      onClick={() =>
+                        router.push(`/autores/${autor.attributes.Slug}`)
+                      }
+                    >
+                      Quiero leerte
+                    </Button>
                   </div>
                 );
                 toggleModal();
@@ -214,8 +241,17 @@ export default function Index({ autores }: any) {
                 src={autor.attributes.Foto.data.attributes.url}
                 alt={autor.attributes.Foto.data.attributes.alternativeText}
               />
-              <p>{autor.attributes.Nombre.split(" ")[0]}</p>
-            </div>
+              <motion.p
+                whileHover={{
+                  scale: 1.1,
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
+              >
+                {autor.attributes.Nombre.split(" ")[0]}
+              </motion.p>
+            </motion.div>
           ))}
         </div>
       </div>

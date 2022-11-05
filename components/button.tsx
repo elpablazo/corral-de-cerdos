@@ -1,6 +1,5 @@
 import { HTMLMotionProps, motion } from "framer-motion";
-import { useRef } from "react";
-
+import { useGlobalStore } from "../lib/store";
 interface ButtonProps extends HTMLMotionProps<"button"> {
   primary?: boolean;
 }
@@ -13,12 +12,11 @@ export default function Button({
   onClick,
   ...props
 }: ButtonProps) {
-  // ¡Oink!
-  const audio = useRef<HTMLAudioElement | undefined>(
-    typeof Audio !== "undefined" ? new Audio("/sounds/oink.mp3") : undefined
-  );
-  let classType = "";
+  // State del ¡oink!
+  const setOink = useGlobalStore((state) => state.setOink);
 
+  // Estilos de primario y secundario
+  let classType = "";
   if (primary) {
     classType = "bg-pig";
   } else {
@@ -36,7 +34,8 @@ export default function Button({
       }}
       className={`font-title rounded-lg border-2 border-transparent py-2 px-4 font-sans text-lg font-bold tracking-normal text-white transition-all ${classType} ${className}`}
       onClick={(e) => {
-        audio.current?.play();
+        // ¡Oink!
+        setOink(true);
         if (onClick) {
           return onClick(e);
         }

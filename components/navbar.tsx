@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
+import Logo from "./logo";
 
 // Animaciones
 const animations = {
@@ -24,18 +25,15 @@ export default function Navbar() {
   // Permite controlar las animaciones del navbar
   const controls = useAnimation();
 
-  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
-  const [userScroll, setUserScroll] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   const controlNavbar = () => {
     if (typeof window !== "undefined") {
       if (window.scrollY > 100) {
-        // if scroll down hide the navbar
-        setIsNavbarHidden(true);
+        setScrolled(true);
       } else {
-        // if scroll up show the navbar
-        setIsNavbarHidden(false);
+        setScrolled(false);
       }
 
       // remember current page location to use in the next move
@@ -55,10 +53,23 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   return (
-    <motion.nav className="fixed flex w-full justify-center space-x-4 bg-white text-dark shadow md:justify-end">
-      <Link href="/">Inicio</Link>
-      <Link href="/#nosotros">Nosotros</Link>
-      <Link href="/#contacto">Contacto</Link>
+    <motion.nav
+      animate={controls}
+      variants={smallAnimation}
+      className={`fixed flex w-full justify-center space-x-4 bg-white px-4 py-2 text-dark md:justify-end md:text-lg ${
+        scrolled ? `shadow` : ``
+      }`}
+    >
+      {scrolled && <Logo className="absolute left-4 hidden text-lg md:flex" />}
+      <Link href="/" className="hover:text-pig focus:text-pig">
+        Inicio
+      </Link>
+      <Link href="/#nosotros" className="hover:text-pig focus:text-pig">
+        Nosotros
+      </Link>
+      <Link href="/#contacto" className="hover:text-pig focus:text-pig">
+        Contacto
+      </Link>
     </motion.nav>
   );
 }
