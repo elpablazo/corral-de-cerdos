@@ -6,9 +6,9 @@ import { newsletter } from "../lib/apollo";
 export default function Newsletter() {
   return (
     <div
-      className="flex w-full flex-col items-center justify-center gap-8 bg-white py-16 px-8 text-center text-dark"
+      className="flex w-full flex-col items-center justify-center gap-8 bg-white py-16 px-8 text-center text-dark dark:bg-dark dark:text-white/75"
       style={{
-        height: "40vh",
+        minHeight: "40vh",
       }}
     >
       <hr className="w-full" />

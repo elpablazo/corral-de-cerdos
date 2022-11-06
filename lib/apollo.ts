@@ -23,9 +23,6 @@ export const client = new ApolloClient({
 });
 
 export const newsletter = async (data: any) => {
-  console.log(API_URL);
-  console.log("token:   ", API_TOKEN);
-
   const res = await fetch(`${API_URL}`, {
     method: "POST",
     headers: {

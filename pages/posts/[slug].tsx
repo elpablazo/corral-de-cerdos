@@ -5,17 +5,41 @@ import Image from "next/image";
 import { DateTime } from "luxon";
 import Link from "next/link";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
-export default function Page({ post }: any) {
+export default function Page({ post, slug }: any) {
   const fecha = DateTime.fromISO(post.publishedAt).toLocaleString(
     DateTime.DATE_FULL
   );
 
   return (
     <div className="flex flex-col items-center justify-center pt-12 text-center">
-      <Head>
-        <title>🐽 - {post.Titulo}</title>
-      </Head>
+      <NextSeo
+        title={`${post.Titulo}`}
+        description={`Revista literaria corral de cerdos. ${post.Titulo}. ${post.autors.data[0].attributes.Nombre}`}
+        openGraph={{
+          title: `${post.Titulo}`,
+          description: `Revista literaria corral de cerdos. ${post.Titulo}. ${post.autors.data[0].attributes.Nombre}`,
+          url: `https://www.corraldecerdos.com/posts/${slug}`,
+          type: "article",
+          article: {
+            publishedTime: `${post.publishedAt}`,
+            authors: post.autors.data.map(
+              (autor: any) =>
+                `https://www.corraldecerdos.com/autores/${autor.attributes.Slug}`
+            ),
+          },
+          // Todo: Tags
+          images: [
+            {
+              url: `${post.Portada.data.attributes.url}`,
+              width: parseInt(post.Portada.data.attributes.width),
+              height: parseInt(post.Portada.data.attributes.height),
+              alt: `${post.Portada.data.attributes.alternativeText}`,
+            },
+          ],
+        }}
+      />
       <div className="container flex flex-col items-center justify-center space-y-4">
         {/* PORTADA */}
         <div className="relative flex aspect-[3/2] h-auto w-full items-center justify-center self-center overflow-hidden rounded md:aspect-[3/1]">
@@ -131,6 +155,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
                       data {
                         attributes {
                           url
+                          width
+                          height
+                          alternativeText
                         }
                       }
                     }
@@ -141,6 +168,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
                 data {
                   attributes {
                     url
+                    width
+                    height
                     alternativeText
                   }
                 }
@@ -160,6 +189,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       post: response.data.posts.data[0].attributes,
+      slug,
     }, // will be passed to the page component as props
   };
 };

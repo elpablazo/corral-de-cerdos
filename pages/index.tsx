@@ -2,14 +2,13 @@ import Image from "next/image";
 import { GetStaticProps } from "next/types";
 import { client } from "../lib/apollo";
 import { useGlobalStore } from "../lib/store";
-import ReactMarkdown from "react-markdown";
 import Button from "../components/button";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Link from "next/link";
 import { gql } from "@apollo/client";
+import { NextSeo } from "next-seo";
 
 const animationTexts = [
   {
@@ -87,9 +86,10 @@ export default function Index({ autores, posts }: any) {
 
   return (
     <div className="text-center">
-      <Head>
-        <title>🐽</title>
-      </Head>
+      <NextSeo
+        title="Revista literaria"
+        description="Revista literaria que trata temas de actualidad, con un enfoque disruptivo, estableciendo la semejanza entre los cerdos y los humanos."
+      />
       <h1
         className={`text-shadow-light px-2 pt-12 text-4xl font-bold tracking-tighter md:text-5xl`}
       >
@@ -375,6 +375,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
                 data {
                   attributes {
                     url
+                    alternativeText
                   }
                 }
               }

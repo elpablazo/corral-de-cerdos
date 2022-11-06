@@ -3,19 +3,37 @@ import { GetStaticPaths, GetStaticProps } from "next/types";
 import { client } from "../../lib/apollo";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Button from "../../components/button";
 import { useState } from "react";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
-export default function Page({ perfil, posts }: any) {
+export default function Page({ perfil, posts, slug }: any) {
   const [showFullText, setShowFullText] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center pt-12 text-center">
-      <Head>
-        <title>🐽 - {perfil.Nombre}</title>
-      </Head>
+      <NextSeo
+        openGraph={{
+          title: `${perfil.Nombre}`,
+          description: `${perfil.Nombre} es autor en Corral de cerdos.`,
+          url: `https://www.corraldecerdos.com/autores/${slug}`,
+          type: "profile",
+          profile: {
+            firstName: `${perfil.Nombre.split(" ")[0]}`,
+            lastName: `${perfil.Nombre.split(" ")[1]}`,
+            username: `${perfil.Nombre}`,
+          },
+          images: [
+            {
+              url: `${perfil.Foto.data.attributes.url}`,
+              alt: `${perfil.Foto.data.attributes.alternativeText}`,
+              width: parseInt(perfil.Foto.data.attributes.width),
+              height: parseInt(perfil.Foto.data.attributes.height),
+            },
+          ],
+        }}
+      />
       <div className="container flex flex-col px-4 md:flex-row md:space-x-8">
         {/* FOTO Y NOMBRE */}
         <div className="flex flex-col items-center space-y-2 bg-white pb-2 transition-all ease-in dark:bg-dark">
@@ -43,7 +61,7 @@ export default function Page({ perfil, posts }: any) {
         <div className="flex w-full flex-col space-y-8 p-4">
           <div className="flex flex-col space-y-4">
             <div
-              className={`prose space-y-4 text-justify dark:text-white/60 md:px-16 ${
+              className={`prose mx-auto space-y-4 text-justify dark:text-white/60 md:px-16 ${
                 !showFullText && `max-h-32 overflow-hidden`
               }`}
               dangerouslySetInnerHTML={{
@@ -54,6 +72,7 @@ export default function Page({ perfil, posts }: any) {
             <Button
               primary={false}
               onClick={() => setShowFullText(!showFullText)}
+              className="mx-auto w-40"
             >
               {showFullText ? "Menos" : "Leer más"}
             </Button>
@@ -156,7 +175,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
               Foto {
                 data {
                   attributes {
+                    width
+                    height
                     url
+                    alternativeText
                   }
                 }
               }
@@ -195,6 +217,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       perfil: response.data.autors.data[0].attributes,
       posts: response.data.posts.data,
+      slug,
     }, // will be passed to the page component as props
   };
 };

@@ -7,6 +7,8 @@ import { ApolloProvider } from "@apollo/client";
 import { useGlobalStore } from "../lib/store";
 import { useEffect, useRef } from "react";
 import { ThemeProvider } from "next-themes";
+import { NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 
 export default function App({ Component, pageProps }: AppProps) {
   // ¡Oink!
@@ -31,6 +33,24 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+        <NextSeo
+          titleTemplate="%s | Corral de cerdos"
+          title="Revista literaria"
+          description="Revista literaria que trata temas de actualidad, con un enfoque disruptivo, estableciendo la semejanza entre los cerdos y los humanos."
+        />
+        <DefaultSeo
+          openGraph={{
+            type: "website",
+            locale: "en_IE",
+            url: "https://www.corraldecerdos.com",
+            siteName: "Corral de cerdos",
+          }}
+          twitter={{
+            handle: "@handle",
+            site: "@site",
+            cardType: "summary_large_image",
+          }}
+        />
         <Layout>
           <Component {...pageProps} />
         </Layout>

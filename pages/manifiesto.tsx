@@ -1,11 +1,13 @@
 import { gql } from "@apollo/client";
 import { motion } from "framer-motion";
+import { NextSeo } from "next-seo";
 import { GetStaticProps } from "next/types";
 import { client } from "../lib/apollo";
 
 export default function Page({ manifiesto }: any) {
   return (
     <div className="flex flex-col pt-16 text-center">
+      <NextSeo title="Manifiesto" />
       <motion.h1
         key="text"
         initial={{ y: 20, opacity: 0 }}
@@ -18,7 +20,7 @@ export default function Page({ manifiesto }: any) {
       <motion.article
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="prose space-y-4 p-8 pb-16 text-justify md:px-20 md:text-lg lg:px-32"
+        className="prose mx-auto justify-center space-y-4 p-8 pb-16 text-justify md:px-20 md:text-lg lg:px-32"
         dangerouslySetInnerHTML={{ __html: manifiesto }}
       />
     </div>
