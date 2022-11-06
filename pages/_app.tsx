@@ -36,7 +36,6 @@ export default function App({ Component, pageProps }: AppProps) {
       domain="corraldecerdos.com"
       trackOutboundLinks
       enabled={true}
-      trackLocalhost={true}
       selfHosted={true}
       customDomain="https://sholomitosanalytics.app.obeskay.com"
     >
