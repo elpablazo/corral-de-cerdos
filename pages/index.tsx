@@ -10,6 +10,7 @@ import Link from "next/link";
 import { gql } from "@apollo/client";
 import { NextSeo } from "next-seo";
 
+// Ola
 const animationTexts = [
   {
     a: "Cerdos, cerdos, cerdos. Carne tan deliciosa que exprime nuestra mandíbula.",
