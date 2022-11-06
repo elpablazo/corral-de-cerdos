@@ -1,9 +1,11 @@
 export default function Logo({ className }: any) {
   return (
-    <p className={`font-bold tracking-tighter text-3xl ${className}`}>
-      <span className="text-mud">Corral</span>{" "}
-      <span className="text-dark">de</span>{" "}
-      <span className="text-pig">cerdos</span>
+    <p
+      className={`text-shadow-light text-3xl font-bold tracking-tighter  ${className}`}
+    >
+      <span className="text-mud dark:text-pig/75">Corral</span>{" "}
+      <span className="text-dark dark:text-pig/75">de</span>{" "}
+      <span className="text-pig dark:text-pig/75">cerdos</span>
     </p>
   );
 }
