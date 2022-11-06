@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <PlausibleProvider
-      domain={`${URL}`}
+      domain="corraldecerdos.com"
       trackOutboundLinks
       enabled={true}
       trackLocalhost={true}
