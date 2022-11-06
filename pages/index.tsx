@@ -12,25 +12,25 @@ import { NextSeo } from "next-seo";
 
 const animationTexts = [
   {
-    a: "Cerdos, cerdos, cerdos. Carne tan deliciosa que exprime nuestra mandíbula",
+    a: "Cerdos, cerdos, cerdos. Carne tan deliciosa que exprime nuestra mandíbula.",
     b: "¿Será porque estos animales son tan iguales a nosotros, los humanos?",
   },
   {
-    a: "Quizá cuando miramos a un cerdo nos encontramos a nosotros mismos: clavamos los colmillos",
+    a: "Quizá cuando miramos a un cerdo nos encontramos a nosotros mismos: clavamos los colmillos.",
     b: "¿Será porque estos animales son tan iguales a nosotros, los humanos?",
   },
   {
     a: "Quizá cuando miramos a un cerdo nos encontramos a nosotros mismos:",
-    b: "el olor de la sangre y las excreciones ajenas nos hacen vibrar hasta la locura.",
+    b: "el olor de la sangre y las excreciones ajenas nos hacen vibrar hasta la locura",
   },
   {
-    a: "Declaremos la guerra.",
+    a: "Declaremos la guerra",
   },
   {
-    a: "Bienvenidos.",
+    a: "Bienvenidos",
   },
   {
-    a: "Revista corral de cerdos.",
+    a: "Revista Corral de Cerdos",
   },
 ];
 
@@ -145,13 +145,13 @@ export default function Index({ autores, posts }: any) {
               onAnimationComplete={() => rotateText()}
             >
               &quot;{texto.textos.a}
-              {!texto.textos.b && <span>&quot;</span>}
+              {!texto.textos.b && <span>&quot;.</span>}
             </motion.p>
           </AnimatePresence>
           {texto.textos.b && (
             <AnimatePresence>
               <motion.p animate={controlsB} transition={transiton}>
-                {texto.textos.b}&quot;
+                {texto.textos.b}&quot;.
               </motion.p>
             </AnimatePresence>
           )}
@@ -310,7 +310,7 @@ export default function Index({ autores, posts }: any) {
                 >
                   <span className="hidden md:flex">
                     {`${post.attributes.Titulo.slice(0, 22)}${
-                      post.attributes.Titulo.length > 22 && `...`
+                      post.attributes.Titulo.length > 22 ? `...` : ``
                     }`}
                   </span>
                   <span className="md:hidden">

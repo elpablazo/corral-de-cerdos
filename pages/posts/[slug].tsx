@@ -16,10 +16,10 @@ export default function Page({ post, slug }: any) {
     <div className="flex flex-col items-center justify-center pt-12 text-center">
       <NextSeo
         title={`${post.Titulo}`}
-        description={`Revista literaria corral de cerdos. ${post.Titulo}. ${post.autors.data[0].attributes.Nombre}`}
+        description={`Revista literaria corral de Cerdos. ${post.Titulo}. ${post.autors.data[0].attributes.Nombre}`}
         openGraph={{
           title: `${post.Titulo}`,
-          description: `Revista literaria corral de cerdos. ${post.Titulo}. ${post.autors.data[0].attributes.Nombre}`,
+          description: `Revista literaria corral de Cerdos. ${post.Titulo}. ${post.autors.data[0].attributes.Nombre}`,
           url: `https://www.corraldecerdos.com/posts/${slug}`,
           type: "article",
           article: {
