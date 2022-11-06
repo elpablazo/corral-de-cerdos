@@ -307,7 +307,7 @@ export default function Index({ autores, posts }: any) {
                   }}
                 ></div>
                 <h1
-                  className={`flex flex-wrap truncate px-4 py-2 text-xl font-bold uppercase dark:text-white/60`}
+                  className={`flex flex-wrap truncate px-4 py-2 text-xl font-bold uppercase dark:text-dark/95`}
                 >
                   <span className="hidden md:flex">
                     {`${post.attributes.Titulo.slice(0, 22)}${
