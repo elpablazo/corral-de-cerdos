@@ -22,7 +22,7 @@ export default function Page({ post }: any) {
           <Image
             quality={100}
             fill={true}
-            className="mx-auto w-full max-w-3xl self-center rounded-lg"
+            className="mx-auto w-full max-w-3xl self-center md:rounded-lg"
             src={post.Portada.data.attributes.url}
             alt={post.Portada.data.attributes.alternativeText}
           />
@@ -56,7 +56,7 @@ export default function Page({ post }: any) {
         </Link>
 
         <div
-          className="prose space-y-4 px-8 pt-8 pb-16 text-justify  dark:text-white/60 md:px-20"
+          className="prose space-y-4 px-8 pt-8 pb-16 text-justify  dark:text-white/60"
           dangerouslySetInnerHTML={{
             __html: post.Contenido,
           }}

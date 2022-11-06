@@ -117,36 +117,12 @@ export default function Navbar() {
       >
         Nosotros
       </Link>
-      <div
-        onClick={() => {
-          setModalContent(
-            <div className="flex w-full flex-col items-center justify-center space-y-8 p-8 pt-4 text-center">
-              <p className="text-shadow-light w-full font-sans text-xl font-bold tracking-tighter text-gray-500">
-                ¿Te gustaría ser parte del corral?
-              </p>
-              <div className="flex flex-col space-y-2">
-                <p className="text-shadow-light w-full font-sans text-lg font-bold tracking-tighter text-gray-500">
-                  Manda un mensaje a nuestro correo{" "}
-                </p>
-
-                <p className="text-shadow-light w-full font-sans text-lg font-bold tracking-tighter text-pig">
-                  corraldecerdos@gmail.com
-                </p>
-              </div>
-
-              <p className="text-shadow-light w-full font-sans text-lg font-bold tracking-tighter text-gray-500">
-                ¡Muéstranos lo mejor que tienes!
-              </p>
-
-              <Button onClick={() => toggleModal()}>¡Oink!</Button>
-            </div>
-          );
-          toggleModal();
-        }}
-        className="cursor-pointer font-semibold hover:text-pig focus:text-pig dark:hover:text-pig/75 dark:focus:text-pig/75"
+      <Link
+        href="/#que-escribimos"
+        className="font-semibold hover:text-pig focus:text-pig dark:hover:text-pig/75 dark:focus:text-pig/75"
       >
-        Contacto
-      </div>
+        Textos
+      </Link>
     </motion.nav>
   );
 }
