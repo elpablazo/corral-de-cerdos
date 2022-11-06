@@ -57,6 +57,15 @@ export default function App({ Component, pageProps }: AppProps) {
               locale: "en_IE",
               url: "https://www.corraldecerdos.com",
               siteName: "Corral de cerdos",
+              images: [
+                {
+                  height: 500,
+                  width: 500,
+
+                  alt: "Logo de la revista corral de cerdos",
+                  url: "/images/logo.jpeg",
+                },
+              ],
             }}
             twitter={{
               handle: "@handle",
