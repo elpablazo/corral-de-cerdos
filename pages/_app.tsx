@@ -9,6 +9,7 @@ import { useEffect, useRef } from "react";
 import { ThemeProvider } from "next-themes";
 import { NextSeo } from "next-seo";
 import { DefaultSeo } from "next-seo";
+import PlausibleProvider from "next-plausible";
 
 export default function App({ Component, pageProps }: AppProps) {
   // ¡Oink!
@@ -31,30 +32,43 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [oink, setOink]);
 
   return (
-    <ApolloProvider client={client}>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
-        <NextSeo
-          titleTemplate="%s | Corral de cerdos"
-          title="Revista literaria"
-          description="Revista literaria que trata temas de actualidad, con un enfoque disruptivo, estableciendo la semejanza entre los cerdos y los humanos."
-        />
-        <DefaultSeo
-          openGraph={{
-            type: "website",
-            locale: "en_IE",
-            url: "https://www.corraldecerdos.com",
-            siteName: "Corral de cerdos",
-          }}
-          twitter={{
-            handle: "@handle",
-            site: "@site",
-            cardType: "summary_large_image",
-          }}
-        />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </ApolloProvider>
+    <PlausibleProvider
+      domain={`${URL}`}
+      trackOutboundLinks
+      enabled={true}
+      trackLocalhost={true}
+      selfHosted={true}
+      customDomain="https://sholomitosanalytics.app.obeskay.com"
+    >
+      <ApolloProvider client={client}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={true}
+        >
+          <NextSeo
+            titleTemplate="%s | Corral de cerdos"
+            title="Revista literaria"
+            description="Revista literaria que trata temas de actualidad, con un enfoque disruptivo, estableciendo la semejanza entre los cerdos y los humanos."
+          />
+          <DefaultSeo
+            openGraph={{
+              type: "website",
+              locale: "en_IE",
+              url: "https://www.corraldecerdos.com",
+              siteName: "Corral de cerdos",
+            }}
+            twitter={{
+              handle: "@handle",
+              site: "@site",
+              cardType: "summary_large_image",
+            }}
+          />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </ApolloProvider>
+    </PlausibleProvider>
   );
 }

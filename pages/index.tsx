@@ -10,6 +10,7 @@ import Link from "next/link";
 import { gql } from "@apollo/client";
 import { NextSeo } from "next-seo";
 
+// Ola
 const animationTexts = [
   {
     a: "Cerdos, cerdos, cerdos. Carne tan deliciosa que exprime nuestra mandíbula.",
@@ -268,7 +269,7 @@ export default function Index({ autores, posts }: any) {
             </motion.div>
           ))}
         </div>
-        <blockquote className="px-16 text-center text-xl font-bold text-gray-700">
+        <blockquote className="px-16 text-center text-xl font-bold text-gray-700 dark:text-white/60">
           Un grupo de anfitriones con tierra debajo de las uñas.
         </blockquote>
       </div>
