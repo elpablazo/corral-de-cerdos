@@ -19,6 +19,7 @@ specifiers:
   graphql: ^16.6.0
   luxon: ^3.1.0
   next: 13.0.0
+  next-plausible: ^3.6.4
   next-seo: ^5.14.0
   next-themes: ^0.2.1
   postcss: ^8.4.18
@@ -42,6 +43,7 @@ dependencies:
   graphql: 16.6.0
   luxon: 3.1.0
   next: 13.0.0_biqbaboplfbrettd7655fr4n2y
+  next-plausible: 3.6.4_r5sq4deac3rmm2d5onhwvomqve
   next-seo: 5.14.0_r5sq4deac3rmm2d5onhwvomqve
   next-themes: 0.2.1_r5sq4deac3rmm2d5onhwvomqve
   react: 18.2.0
@@ -2182,6 +2184,18 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /next-plausible/3.6.4_r5sq4deac3rmm2d5onhwvomqve:
+    resolution: {integrity: sha512-aHL4IL+gkkjs5ScB18LZ3LMEWXKR5VTvnMDs/fHNFHadOh23i37fD+VP5oAQLALR8Mde63l9JJljrw9DkvjWjQ==}
+    peerDependencies:
+      next: ^11.1.0 || ^12.0.0 || ^13.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      next: 13.0.0_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /next-seo/5.14.0_r5sq4deac3rmm2d5onhwvomqve:
     resolution: {integrity: sha512-VpbVFXbDzy31qoKBH7xoxtzh+nDhEWYOBnlc18zkXmypRd3X9vxdwh7rlr3q2BQTfbfk2J/a6Y2vEb+oTcCW0w==}
