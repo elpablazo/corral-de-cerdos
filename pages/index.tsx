@@ -130,7 +130,7 @@ export default function Index({ autores, posts }: any) {
         </div>
       </div>
 
-      {/* MANIFIESTO */}
+      {/* MANIFIESTO sss */}
       <div
         style={{
           height: "50vh",
