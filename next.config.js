@@ -2,7 +2,7 @@ const { withPlausibleProxy } = require("next-plausible");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPlausibleProxy({
-  customDomain: "https://sholomitosanalytics.app.obeskay.com",
+  customDomain: "https://statistics.server.pablazo.com.mx",
 })({
   reactStrictMode: true,
   swcMinify: true,
