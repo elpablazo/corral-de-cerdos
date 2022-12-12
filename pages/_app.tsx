@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
       trackOutboundLinks
       enabled={true}
       selfHosted={true}
-      customDomain="https://sholomitosanalytics.app.obeskay.com"
+      customDomain="https://statistics.server.pablazo.com.mx"
     >
       <ApolloProvider client={client}>
         <ThemeProvider
