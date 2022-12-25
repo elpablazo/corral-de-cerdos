@@ -252,10 +252,10 @@ export default function Index({ autores, posts }: any) {
               <motion.p
                 className={`text-shadow-light ${
                   i % 3 === 0
-                    ? "text-pig"
+                    ? "text-mud"
                     : i % 2 === 0
-                    ? "text-grass"
-                    : "text-dark"
+                    ? "text-dark"
+                    : "text-pig"
                 } dark:text-dark`}
                 whileHover={{
                   scale: 1.1,
