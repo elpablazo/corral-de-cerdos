@@ -98,7 +98,7 @@ export default function Index({ autores, posts }: any) {
         <span className="text-dark dark:text-pig/75">de</span>{" "}
         <span className="text-pig dark:text-pig/75">cerdos</span>
       </h1>
-      <h2 className="font-cursive text-xl font-bold text-grass dark:text-white/75 md:text-3xl">
+      <h2 className="font-cursive text-xl font-bold text-extra dark:text-extra/75 md:text-3xl">
         Revista literaria.
       </h2>
 
@@ -277,59 +277,66 @@ export default function Index({ autores, posts }: any) {
       {/* LO QUE ESCRIBIMOS */}
       <div
         id="que-escribimos"
-        className="space-y-8 bg-grass py-8 dark:bg-grass/60 md:space-y-12 md:py-12"
+        className="text-shadow-light space-y-8 bg-grass py-8 text-dark dark:bg-grass/60 md:space-y-12 md:py-12"
       >
         <div className="flex flex-col space-y-6">
-          <h1 className="font-sans text-4xl font-bold tracking-tighter text-white dark:text-white/75">
+          <h1 className="font-sans text-4xl font-bold tracking-tighter text-dark dark:text-dark/75">
             Lo que escribimos
           </h1>
-          <h2 className="font-sans text-2xl font-bold tracking-tighter text-white dark:text-white/75">
+          <h2 className="font-sans text-2xl font-bold tracking-tighter text-dark dark:text-dark/75">
             Tema del mes:{" "}
-            <span className="text-shadow-light text-pig">cerdos</span>
+            <span className="text-shadow-light">
+              <span className="text-mud dark:text-mud/75">El otro lado </span>
+              <span className="text-dark dark:text-dark/75">de </span>
+              <span className="text-pig dark:text-pig/75">navidad</span>
+            </span>
           </h2>
         </div>
 
         {/* TEXTOS */}
         <div className="flex flex-col flex-wrap gap-8 px-12 md:flex-row md:justify-evenly md:space-y-0">
-          {posts.map((post: any, i: number) => (
-            <Link key={post.id} href={`/posts/${post.attributes.Slug}`}>
-              <motion.div
-                whileTap={{
-                  scale: 0.95,
-                }}
-                className="mx-auto flex w-auto flex-col items-center justify-center space-y-2 rounded-lg bg-white p-4 text-center"
-              >
-                <div
-                  className="h-40 w-40 rounded-lg md:h-72 md:w-72"
-                  style={{
-                    backgroundPosition: "center center",
-                    backgroundImage: `url("${post.attributes.Portada.data.attributes.url}")`,
-                  }}
-                ></div>
-                <h1
-                  className={`flex flex-wrap truncate px-4 py-2 text-xl font-bold uppercase dark:text-dark/95`}
-                >
-                  <span className="hidden md:flex">
-                    {`${post.attributes.Titulo.slice(0, 22)}${
-                      post.attributes.Titulo.length > 22 ? `...` : ``
-                    }`}
-                  </span>
-                  <span className="md:hidden">
-                    {post.attributes.Titulo.slice(0, 15)}...
-                  </span>
-                </h1>
-                <Button
-                  primary={parseInt(post.id) % 2 === 0}
-                  className={`w-max`}
-                >
-                  Leer artículo
-                </Button>
-              </motion.div>
-            </Link>
-          ))}
+          {posts.map((post: any, i: number) => {
+            if (i < 2)
+              return (
+                <Link key={post.id} href={`/posts/${post.attributes.Slug}`}>
+                  <motion.div
+                    whileTap={{
+                      scale: 0.95,
+                    }}
+                    className="mx-auto flex w-auto flex-col items-center justify-center space-y-2 rounded-lg bg-white p-4 text-center"
+                  >
+                    <div
+                      className="h-40 w-40 rounded-lg md:h-72 md:w-72"
+                      style={{
+                        backgroundPosition: "center center",
+                        backgroundImage: `url("${post.attributes.Portada.data.attributes.url}")`,
+                      }}
+                    ></div>
+                    <h1
+                      className={`flex flex-wrap truncate px-4 py-2 text-xl font-bold uppercase dark:text-dark/95`}
+                    >
+                      <span className="hidden md:flex">
+                        {`${post.attributes.Titulo.slice(0, 22)}${
+                          post.attributes.Titulo.length > 22 ? `...` : ``
+                        }`}
+                      </span>
+                      <span className="md:hidden">
+                        {post.attributes.Titulo.slice(0, 15)}...
+                      </span>
+                    </h1>
+                    <Button
+                      primary={parseInt(post.id) % 2 === 0}
+                      className={`w-max`}
+                    >
+                      Leer artículo
+                    </Button>
+                  </motion.div>
+                </Link>
+              );
+          })}
         </div>
 
-        <h1 className="font-sans text-4xl font-bold tracking-tighter text-white dark:text-white/75">
+        <h1 className="font-sans text-4xl font-bold tracking-tighter text-dark dark:text-dark/75">
           Nuevas temáticas, nuevos textos cada inicio de mes.
         </h1>
       </div>
@@ -366,10 +373,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const posts = await client.query({
     query: gql`
       query Posts {
-        posts {
+        posts(sort: "publishedAt:desc") {
           data {
             id
             attributes {
+              publishedAt
               Titulo
               Slug
               Portada {
