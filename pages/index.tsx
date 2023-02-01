@@ -286,9 +286,9 @@ export default function Index({ autores, posts }: any) {
           <h2 className="font-sans text-2xl font-bold tracking-tighter text-dark dark:text-dark/75">
             Tema del mes:{" "}
             <span className="text-shadow-light">
-              <span className="text-mud dark:text-mud/75">El otro lado </span>
-              <span className="text-dark dark:text-dark/75">de </span>
-              <span className="text-pig dark:text-pig/75">navidad</span>
+              <span className="text-mud dark:text-mud/75">Nuevos {" "}</span>
+         
+              <span className="text-pig dark:text-pig/75">comienzos</span>
             </span>
           </h2>
         </div>

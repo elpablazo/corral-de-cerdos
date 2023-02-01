@@ -11,6 +11,9 @@ import { NextSeo } from "next-seo";
 export default function Page({ perfil, posts, slug }: any) {
   const [showFullText, setShowFullText] = useState(false);
 
+  console.log(posts.map((item: any) => item.id));
+  
+
   return (
     <div className="flex flex-col items-center justify-center pt-12 text-center">
       <NextSeo
@@ -84,7 +87,7 @@ export default function Page({ perfil, posts, slug }: any) {
             Mis posts
           </p>
           {/* SEPARADOR */}
-          {posts.map((post: any, i: number) => (
+          {posts.reverse().map((post: any, i: number) => (
             <Link
               key={post.id}
               href={`/posts/${post.attributes.Slug}`}
@@ -92,7 +95,7 @@ export default function Page({ perfil, posts, slug }: any) {
             >
               <h1
                 className={`text-xl font-bold uppercase dark:text-white/60 md:self-start ${
-                  parseInt(post.id) % 2 === 0
+                  i % 2 === 0
                     ? "pr-8 md:order-2 md:justify-end"
                     : "md:order-1 md:justify-start"
                 }`}
@@ -100,9 +103,9 @@ export default function Page({ perfil, posts, slug }: any) {
                 {i + 1}: {post.attributes.Titulo}
               </h1>
               <Button
-                primary={parseInt(post.id) % 2 === 0}
+                primary={i % 2 === 0}
                 className={`w-max ${
-                  parseInt(post.id) % 2 === 0
+                  i % 2 === 0
                     ? "md:order-1 md:justify-end"
                     : "md:order-2 md:justify-start"
                 }`}
