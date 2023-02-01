@@ -20,7 +20,7 @@ export default function Page({ manifiesto }: any) {
       <motion.article
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="prose mx-auto justify-center space-y-4 p-8 pb-16 text-justify md:px-20 md:text-lg lg:px-32"
+        className="prose mx-auto justify-center space-y-4 p-8 pb-16 text-justify md:px-20 md:text-lg lg:px-32 dark:text-white/60"
         dangerouslySetInnerHTML={{ __html: manifiesto }}
       />
     </div>
