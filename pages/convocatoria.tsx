@@ -4,8 +4,8 @@ import Button from "../components/button";
 export default function Page() {
   // En esta página se muestra la convocatoria para los nuevos escritores
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-shadow-light px-2 pt-12 text-4xl font-bold tracking-tighter text-dark md:text-5xl">
+    <div className="flex min-h-screen flex-col items-center justify-center px-6">
+      <h1 className="text-shadow-light px-4 pt-12 text-center text-5xl font-bold tracking-tighter text-dark lg:text-4xl">
         Así que quieres ser parte del{" "}
         <span className="text-pig dark:text-pig/75">corral</span>.
       </h1>
