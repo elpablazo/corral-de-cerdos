@@ -33,14 +33,14 @@ export default function Page() {
             formas narrativas y de expresión artística, y no para limitarnos.
           </p>
           <p className="text-center font-bold">
-            Dejemos a los humanos ser humanos, y que los robots se encarguen del
-            resto.
+            Dejemos a los seres humanos ser humanos, y que los robots se
+            encarguen del resto.
           </p>
           <p>
             <span className="font-bold">Subversión</span> es el motto de la
             revista. Un buen escritor necesita estar a la altura de la época en
-            la que vive y, por esa razón, nuestro compromiso es involucrarnos en
-            actualidad. (Incluso cuando la sociedad requiera recordar el
+            la la que vive y, por esa razón, nuestro compromiso es involucrarnos
+            en actualidad. (Incluso cuando la sociedad requiera recordar el
             pasado). Para ser breves: Hay que ser{" "}
             <span className="text-pig">extrañamente refrescantes</span>.
           </p>
@@ -88,9 +88,14 @@ export default function Page() {
             Si fuiste seleccionado, recibirás nuestra respuesta un par de días,
             así como las instrucciones para los próximos pasos.
           </p>
+          <p>
+            Si necesitas inspiración, checa alguna de nuestras publicaciones en
+            la pestaña de "Textos".
+          </p>
           <p className="text-center text-xl font-bold">
             ¿Qué dices? ¿Listo para ser uno más del corral?
           </p>
+          <p>Participar no tiene ningún costo.</p>
           <a
             className="decoration-none mx-auto flex justify-center text-center no-underline"
             href="mailto:contacto@corraldecerdos.com"
