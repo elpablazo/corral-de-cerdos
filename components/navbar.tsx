@@ -123,6 +123,12 @@ export default function Navbar() {
       >
         Textos
       </Link>
+      <Link
+        href="/convocatoria"
+        className="font-semibold hover:text-pig focus:text-pig dark:hover:text-pig/75 dark:focus:text-pig/75"
+      >
+        Convocatoria
+      </Link>
     </motion.nav>
   );
 }

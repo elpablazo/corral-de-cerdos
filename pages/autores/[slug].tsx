@@ -11,9 +11,6 @@ import { NextSeo } from "next-seo";
 export default function Page({ perfil, posts, slug }: any) {
   const [showFullText, setShowFullText] = useState(false);
 
-  console.log(posts.map((item: any) => item.id));
-  
-
   return (
     <div className="flex flex-col items-center justify-center pt-12 text-center">
       <NextSeo
